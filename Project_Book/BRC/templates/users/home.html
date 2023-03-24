@@ -1,0 +1,20 @@
+{% include "users/header4.html" %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome, {{user.first_name.title|default:'Guest'}}</h1>
+        <p class="lead">
+            This is <b>Book recommendation website</b> where you can Read 
+            E-Book accoroding to your interest
+        </p>
+        <hr class="my-4">
+        <p class="lead">
+            {% if user.is_authenticated %}
+                <a class="btn btn-primary btn-lg" href="{% url 'logout' %}" role="button">Logout</a>
+            {% else %}
+                <a class="btn btn-primary btn-lg" href="{% url 'login' %}" role="button">Sign in</a>
+            {% endif %}
+        </p>
+    </div>
+
+{% endblock body%}
